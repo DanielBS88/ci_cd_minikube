@@ -1,20 +1,19 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nodejs-app
   namespace: default
-  labels:                 # Fixed labels here
+  labels:
     app: nodejs-app
 spec:
   replicas: 1
   selector:
-    matchLabels:          # Ensure this matches the Pod template labels below
+    matchLabels:
       app: nodejs-app
   template:
     metadata:
       labels:
-        app: nodejs-app   # Ensure Pod labels match Service selector
+        app: nodejs-app
     spec:
       containers:
       - name: nodejs-app
@@ -28,7 +27,7 @@ metadata:
   name: nodejs-app
   namespace: default
 spec:
-  selector:                # Ensure Service selector matches Pod labels
+  selector:
     app: nodejs-app
   type: NodePort
   ports:
